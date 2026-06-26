@@ -64,7 +64,7 @@ split {
 	else if (!vars.splitDddFade && vars.gotDddStar && vars.oldStage == 23 && vars.currStage == 6) {
 		vars.splitDddFade = true; return true;
 	}
-	else if (!vars.splitBitfsEntered && vars.oldStage != 19 && vars.currStage == 19) {
+	else if (!vars.splitBitfsEntered && vars.currStar == 0 && vars.oldStage != 19 && vars.currStage == 19) {
 		vars.splitBitfsEntered = true; return true;
 	}
 	else if (!vars.splitKey2Grabbed && vars.oldStage == 33 && vars.currStage == 6) {
