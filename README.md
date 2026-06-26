@@ -1,1 +1,1 @@
-An autosplitter script for Super Mario 64 that automatically starts, reset, and splits. Supports both Japanese and US versions.
+LiveSplit autosplitter for Super Mario 64. Supports JP (0, 1, 16, and 120 Star) and US (70 Star) versions.
