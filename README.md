@@ -1,19 +1,14 @@
-Super Mario 64 Autosplitter for LiveSplit
+Autosplitter built for optimizing your times in Super Mario 64 speedrunning.
+Versions Supported
 
-This autosplitter is designed to streamline your timing for Super Mario 64 speedruns.
+  Japanese (JP) Version - 0-Star, 1-Star, 16-Star, 120-Star
 
-Supported Versions
+  North American (US) Version - 70-Star
 
-JP Version: 0 Star, 1 Star, 16 Star, and 120 Star
+Usage Requirements
 
-US Version: 70 Star
+  0-Star, 1-Star, and 16-Star Categories - Only supported on the Japanese (JP) version.
 
-Important Usage Note:
+  16-Star Routes - LBLJ and non-LBLJ routes are both supported.
 
-This autosplitter is designed exclusively for advanced speedrun routes. It is optimized for:
-
-16 Star: LBLJ Route
-
-70 Star: Island Hop Route
-
-120 Star: LBLJ Route
+  70-Star Category - Only supported on the North American (US) version. At the moment, only Island Hop route is supported, but a beginner route will be released in an upcoming update.
