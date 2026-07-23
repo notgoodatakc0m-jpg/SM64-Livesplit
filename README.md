@@ -1,4 +1,5 @@
 Autosplitter built for optimizing your times in Super Mario 64 speedrunning.
+
 Versions Supported
 
   Japanese (JP) Version - 0-Star, 1-Star, 16-Star, 120-Star
