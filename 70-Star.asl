@@ -5,66 +5,43 @@ state("Project64") {
 	ushort starUS : "Project64.exe", 0xD6A1C, 0x33B218;
 }
 
-init { 
-	vars.isAdvanced       = false;
+init {
+	vars.ResetVars = (Action)(() => {
+		vars.isAdvanced   = false;
 
-	vars.splitStar3       = false;
-	vars.splitStar9       = false;
-	vars.splitStar10      = false;
-	vars.splitStar12_WC   = false;
-	vars.splitKey1Grabbed = false;
-	vars.splitStar17      = false;
-	vars.splitStar18      = false;
-	vars.splitStar19      = false;
-	vars.splitStar20      = false;
-	vars.splitStar24      = false;
-	vars.splitStar30      = false;
-	vars.splitStar33      = false;
-	vars.splitStar35      = false;
-	vars.splitStar38      = false;
-	vars.splitKey2Grabbed = false;
-	vars.splitStar39      = false;
-	vars.splitStar42      = false;
-	vars.splitStar44      = false;
-	vars.splitStar47      = false;
-	vars.splitStar48      = false;
-	vars.splitStar52      = false;
-	vars.splitStar53      = false;
-	vars.splitStar58      = false;
-	vars.splitStar62      = false;
-	vars.splitStar69      = false;
-	vars.splitStar70      = false;
+		vars.star3     = false;
+		vars.star9     = false;
+		vars.star10    = false;
+		vars.star12    = false;
+		vars.star17    = false;
+		vars.star18    = false;
+		vars.star19    = false;
+		vars.star20    = false;
+		vars.star24    = false;
+		vars.star30    = false;
+		vars.star33    = false;
+		vars.star35    = false;
+		vars.star38    = false;
+		vars.star39    = false;
+		vars.star42    = false;
+		vars.star44    = false;
+		vars.star47    = false;
+		vars.star48    = false;
+		vars.star52    = false;
+		vars.star53    = false;
+		vars.star58    = false;
+		vars.star62    = false;
+		vars.star69    = false;
+		vars.star70    = false;
+
+		vars.exitBitDW = false;
+		vars.exitBitFS = false;
+	});
+	vars.ResetVars();
 }
 
 onStart {
-	vars.isAdvanced       = false;
-
-	vars.splitStar3       = false;
-	vars.splitStar9       = false;
-	vars.splitStar10      = false;
-	vars.splitStar12_WC   = false;
-	vars.splitKey1Grabbed = false;
-	vars.splitStar17      = false;
-	vars.splitStar18      = false;
-	vars.splitStar19      = false;
-	vars.splitStar20      = false;
-	vars.splitStar24      = false;
-	vars.splitStar30      = false;
-	vars.splitStar33      = false;
-	vars.splitStar35      = false;
-	vars.splitStar38      = false;
-	vars.splitKey2Grabbed = false;
-	vars.splitStar39      = false;
-	vars.splitStar42      = false;
-	vars.splitStar44      = false;
-	vars.splitStar47      = false;
-	vars.splitStar48      = false;
-	vars.splitStar52      = false;
-	vars.splitStar53      = false;
-	vars.splitStar58      = false;
-	vars.splitStar62      = false;
-	vars.splitStar69      = false;
-	vars.splitStar70      = false;
+	vars.ResetVars();
 }
 
 update {
@@ -78,128 +55,129 @@ update {
 	vars.oldStar   = old.starUS;
 }
 
-start { 
-	return vars.currTmr == 4; 
+start {
+	return vars.currTmr == 4;
 }
 
 split {
 	bool isCourseFade = (vars.oldStage != 6 && vars.currStage == 6 && vars.oldStage != 26 && vars.oldStage != 30 && vars.oldStage != 33);
 	bool CastleCourtyardFade = (vars.oldStage == 4 && vars.currStage == 26);
 
-	if (isCourseFade && !vars.splitStar3 && !vars.splitStar9) {
+	if (isCourseFade && !vars.star3 && !vars.star9) {
 		if (vars.currStar < 9) {
 			vars.isAdvanced = true;
 		}
 	}
 
-	if (vars.isAdvanced) {
-		if (!vars.splitStar3 && vars.currStar >= 3 && isCourseFade) {
-			vars.splitStar3 = true; return true;
-		}
-		else if (!vars.splitStar10 && vars.currStar >= 10 && isCourseFade) {
-			vars.splitStar10 = true; return true;
-		}
-		else if (!vars.splitStar12_WC && vars.currStar >= 12 && isCourseFade) {
-			vars.splitStar12_WC = true; return true;
-		}
-		else if (!vars.splitKey1Grabbed && vars.oldStage == 30 && vars.currStage == 6) {
-			vars.splitKey1Grabbed = true; return true;
-		}
-		else if (!vars.splitStar17 && vars.currStar >= 17 && isCourseFade) {
-			vars.splitStar17 = true; return true;
-		}
-		else if (!vars.splitStar19 && vars.currStar >= 19 && CastleCourtyardFade) {
-			vars.splitStar19 = true; return true;
-		}
-		else if (!vars.splitStar24 && vars.currStar >= 24 && isCourseFade) {
-			vars.splitStar24 = true; return true;
-		}
-		else if (!vars.splitStar30 && vars.currStar >= 30 && isCourseFade) {
-			vars.splitStar30 = true; return true;
-		}
-		else if (!vars.splitStar33 && vars.currStar >= 33 && isCourseFade) {
-			vars.splitStar33 = true; return true;
-		}
-		else if (!vars.splitKey2Grabbed && vars.oldStage == 33 && vars.currStage == 6) {
-			vars.splitKey2Grabbed = true; return true;
-		}
-		else if (!vars.splitStar39 && vars.currStar >= 39 && isCourseFade) {
-			vars.splitStar39 = true; return true;
-		}
-		else if (!vars.splitStar42 && vars.currStar >= 42 && isCourseFade) {
-			vars.splitStar42 = true; return true;
-		}
-		else if (!vars.splitStar48 && vars.currStar >= 48 && isCourseFade) {
-			vars.splitStar48 = true; return true;
-		}
-		else if (!vars.splitStar52 && vars.currStar >= 52 && isCourseFade) {
-			vars.splitStar52 = true; return true;
-		}
-		else if (!vars.splitStar58 && vars.currStar >= 58 && isCourseFade) {
-			vars.splitStar58 = true; return true;
-		}
-		else if (!vars.splitStar62 && vars.currStar >= 62 && isCourseFade) {
-			vars.splitStar62 = true; return true;
-		}
-		else if (!vars.splitStar69 && vars.currStar >= 69 && isCourseFade) {
-			vars.splitStar69 = true; return true;
-		}
-		else if (vars.currAnm == 0x1909 && vars.oldAnm != 0x1909) {
-			return true;
-		}
+	if (vars.isAdvanced && !vars.star3 && vars.currStar >= 3 && isCourseFade) {
+		vars.star3 = true; return true;
 	}
-	else {
-		if (!vars.splitStar9 && vars.currStar >= 9 && isCourseFade) {
-			vars.splitStar9 = true; return true;
-		}
-		else if (!vars.splitKey1Grabbed && vars.oldStage == 30 && vars.currStage == 6) {
-			vars.splitKey1Grabbed = true; return true;
-		}
-		else if (!vars.splitStar18 && vars.currStar >= 18 && isCourseFade) {
-			vars.splitStar18 = true; return true;
-		}
-		else if (!vars.splitStar20 && vars.currStar >= 20 && CastleCourtyardFade) {
-			vars.splitStar20 = true; return true;
-		}
-		else if (!vars.splitStar24 && vars.currStar >= 24 && isCourseFade) {
-			vars.splitStar24 = true; return true;
-		}
-		else if (!vars.splitStar30 && vars.currStar >= 30 && isCourseFade) {
-			vars.splitStar30 = true; return true;
-		}
-		else if (!vars.splitStar35 && vars.currStar >= 35 && isCourseFade) {
-			vars.splitStar35 = true; return true;
-		}
-		else if (!vars.splitStar38 && vars.currStar >= 38 && isCourseFade) {
-			vars.splitStar38 = true; return true;
-		}
-		else if (!vars.splitKey2Grabbed && vars.oldStage == 33 && vars.currStage == 6) {
-			vars.splitKey2Grabbed = true; return true;
-		}
-		else if (!vars.splitStar44 && vars.currStar >= 44 && isCourseFade) {
-			vars.splitStar44 = true; return true;
-		}
-		else if (!vars.splitStar47 && vars.currStar >= 47 && isCourseFade) {
-			vars.splitStar47 = true; return true;
-		}
-		else if (!vars.splitStar53 && vars.currStar >= 53 && isCourseFade) {
-			vars.splitStar53 = true; return true;
-		}
-		else if (!vars.splitStar58 && vars.currStar >= 58 && isCourseFade) {
-			vars.splitStar58 = true; return true;
-		}
-		else if (!vars.splitStar62 && vars.currStar >= 62 && isCourseFade) {
-			vars.splitStar62 = true; return true;
-		}
-		else if (!vars.splitStar70 && vars.currStar >= 70 && isCourseFade) {
-			vars.splitStar70 = true; return true;
-		}
-		else if (vars.currAnm == 0x1909 && vars.oldAnm != 0x1909) {
-			return true;
-		}
+
+	if (!vars.isAdvanced && !vars.star9 && vars.currStar >= 9 && isCourseFade) {
+		vars.star9 = true; return true;
+	}
+
+	if (vars.isAdvanced && !vars.star10 && vars.currStar >= 10 && isCourseFade) {
+		vars.star10 = true; return true;
+	}
+
+	if (vars.isAdvanced && !vars.star12 && vars.currStar >= 12 && isCourseFade) {
+		vars.star12 = true; return true;
+	}
+
+	if (!vars.exitBitDW && vars.oldStage == 30 && vars.currStage == 6) {
+		vars.exitBitDW = true; return true;
+	}
+
+	if (vars.isAdvanced && !vars.star17 && vars.currStar >= 17 && isCourseFade) {
+		vars.star17 = true; return true;
+	}
+
+	if (!vars.isAdvanced && !vars.star18 && vars.currStar >= 18 && isCourseFade) {
+		vars.star18 = true; return true;
+	}
+
+	if (vars.isAdvanced && !vars.star19 && vars.currStar >= 19 && CastleCourtyardFade) {
+		vars.star19 = true; return true;
+	}
+
+	if (!vars.isAdvanced && !vars.star20 && vars.currStar >= 20 && CastleCourtyardFade) {
+		vars.star20 = true; return true;
+	}
+
+	if (!vars.star24 && vars.currStar >= 24 && isCourseFade) {
+		vars.star24 = true; return true;
+	}
+
+	if (!vars.star30 && vars.currStar >= 30 && isCourseFade) {
+		vars.star30 = true; return true;
+	}
+
+	if (vars.isAdvanced && !vars.star33 && vars.currStar >= 33 && isCourseFade) {
+		vars.star33 = true; return true;
+	}
+
+	if (!vars.isAdvanced && !vars.star35 && vars.currStar >= 35 && isCourseFade) {
+		vars.star35 = true; return true;
+	}
+
+	if (!vars.isAdvanced && !vars.star38 && vars.currStar >= 38 && isCourseFade) {
+		vars.star38 = true; return true;
+	}
+
+	if (vars.isAdvanced && !vars.star39 && vars.currStar >= 39 && isCourseFade) {
+		vars.star39 = true; return true;
+	}
+
+	if (vars.isAdvanced && !vars.star42 && vars.currStar >= 42 && isCourseFade) {
+		vars.star42 = true; return true;
+	}
+
+	if (!vars.isAdvanced && !vars.star44 && vars.currStar >= 44 && isCourseFade) {
+		vars.star44 = true; return true;
+	}
+
+	if (!vars.isAdvanced && !vars.star47 && vars.currStar >= 47 && isCourseFade) {
+		vars.star47 = true; return true;
+	}
+
+	if (vars.isAdvanced && !vars.star48 && vars.currStar >= 48 && isCourseFade) {
+		vars.star48 = true; return true;
+	}
+
+	if (!vars.exitBitFS && vars.oldStage == 33 && vars.currStage == 6) {
+		vars.exitBitFS = true; return true;
+	}
+
+	if (vars.isAdvanced && !vars.star52 && vars.currStar >= 52 && isCourseFade) {
+		vars.star52 = true; return true;
+	}
+
+	if (!vars.isAdvanced && !vars.star53 && vars.currStar >= 53 && isCourseFade) {
+		vars.star53 = true; return true;
+	}
+
+	if (!vars.star58 && vars.currStar >= 58 && isCourseFade) {
+		vars.star58 = true; return true;
+	}
+
+	if (!vars.star62 && vars.currStar >= 62 && isCourseFade) {
+		vars.star62 = true; return true;
+	}
+
+	if (vars.isAdvanced && !vars.star69 && vars.currStar >= 69 && isCourseFade) {
+		vars.star69 = true; return true;
+	}
+
+	if (!vars.isAdvanced && !vars.star70 && vars.currStar >= 70 && isCourseFade) {
+		vars.star70 = true; return true;
+	}
+
+	if (vars.currAnm == 0x1909 && vars.oldAnm != 0x1909) {
+		return true;
 	}
 }
 
-reset { 
-	return vars.currTmr < vars.oldTmr && vars.currTmr == 0; 
+reset {
+	return vars.currTmr < vars.oldTmr && vars.currTmr == 0;
 }
