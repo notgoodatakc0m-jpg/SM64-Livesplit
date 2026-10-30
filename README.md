@@ -11,6 +11,7 @@ An autosplitter for Super Mario 64 speedrunning, built specifically for **Projec
 
 - **16-Star:** Supports both LBLJ and non-LBLJ routes.
 - **70-Star:** Supports both Island Hop and Beginner/Standard routes.
+- **120-Star:** Supports both LBLJ and non-LBLJ routes.
 
 ## How to Use
 
